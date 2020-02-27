@@ -4,4 +4,4 @@ WORKDIR /app
 RUN pip install flask==1.0.2
 EXPOSE 8080
 ENTRYPOINT ["python"]
-CMD ["app.py"]
+CMD ["helloworld.py"]
