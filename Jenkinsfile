@@ -9,7 +9,7 @@ node{
     }
     stage ('Build Docker Images'){
         sh 'echo $PATH'
-        sh  'docker build - < Dockerfile -t ravishah21/helloworld:v1.0'
+        sh  'docker build -t ravishah21/helloworld:v1.0 .'
     }
     stage('Push Docker image'){
        withCredentials([string(credentialsId: 'secret', variable: 'dockersecret')]) {
