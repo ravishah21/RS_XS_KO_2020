@@ -9,19 +9,19 @@ node{
     }
     stage ('Build Docker Images'){
         sh 'echo $PATH'
-        sh  'docker build -t docker build - < Dockerfile -t ravishah21/helloworld:v1 .'
+        sh  'docker build -t docker build - < Dockerfile -t ravishah21/helloworld:v1.0 .'
     }
     stage('Push Docker image'){
        withCredentials([string(credentialsId: 'dockersecret', variable: 'secret')]) {
 
-        sh "docker login -u vbmehtasdocker -p ${secret}"
+        sh "docker login -u ravishah21 -p ${secret}"
        }
-        sh 'docker push vbmehtasdocker/pyapp:1.0'
+        sh 'docker push ravishah21/helloworld:v1.0'
     }
     stage ('undeploy previous application on Dev box'){
-      sh 'docker rm pyapp -f'
+      sh 'docker rm helloworld -f'
     }
     stage ('Run Contianer application on Dev box'){
-      sh 'docker run --name pyapp -d --network jenkins --publish 8081:8080  vbmehtasdocker/pyapp:1.0'
+      sh 'docker run --name helloworld -d --network jenkins --publish 8081:8080  ravishah21/helloworld:v1.0'
     }
 }
