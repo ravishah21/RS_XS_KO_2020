@@ -3,13 +3,13 @@ node{
         def dockerHome = '/usr/local/bin/'
         env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
-    stage('Scm Checkout')
+    stage('GIT Check')
     {
-       git credentialsId: 'git-creds', url: 'git@bitbucket.org:vbmehtabitbucket/2020digitalinovation.git'
+       git credentialsId: '47139ef4-ee07-46d8-ba1a-80e4700e21ba', url: 'https://github.com/ravishah21/RS_XS_KO_2020.git'
     }
     stage ('Build Docker Images'){
         sh 'echo $PATH'
-        sh  'docker build -t vbmehtasdocker/pyapp:1.0 .'
+        sh  'docker build -t docker build - < Dockerfile -t ravishah21/helloworld:v1 .'
     }
     stage('Push Docker image'){
        withCredentials([string(credentialsId: 'dockersecret', variable: 'secret')]) {
