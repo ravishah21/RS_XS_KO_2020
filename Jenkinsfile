@@ -21,7 +21,7 @@ node{
     stage ('remove old container'){
       def result = sh "docker ps --format {{.Names}} -a |grep helloworld"
       echo result
-      if ( result = null ){
+      if result == null {
           echo "No helloworld container exists"
       } else {
           echo "helloworld container exists"
