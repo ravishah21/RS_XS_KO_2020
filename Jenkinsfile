@@ -29,6 +29,6 @@ node{
       }
     }
     stage ('add new container application'){
-      sh 'docker run --name helloworld -d --network jenkins --publish 8081:8080  ravishah21/helloworld:v1.0'
+      sh 'docker run --name helloworld -d --publish 8081:8080  ravishah21/helloworld:v1.0'
     }
 }
