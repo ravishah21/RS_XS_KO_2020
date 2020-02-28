@@ -19,7 +19,7 @@ node{
         sh 'docker push ravishah21/helloworld:v1.0'
     }
     stage ('undeploy previous application on Dev box'){
-      def result = sh "docker container ls"
+      def result = sh "docker container ls -q"
       echo result
       if ( result == '' ){
           echo "No such container exists"
