@@ -18,17 +18,17 @@ node{
        }
         sh 'docker push ravishah21/helloworld:v1.0'
     }
-    stage ('undeploy previous application on Dev box'){
+    stage ('remove old container'){
       def result = sh "docker container ls -q"
       echo result
-      if ( result == '' ){
+      if ( result == 'null' ){
           echo "No such container exists"
       } else {
           echo "Container exists"
           sh 'docker rm helloworld -f'
       }
     }
-    stage ('Run Contianer application on Dev box'){
+    stage ('add new container application'){
       sh 'docker run --name helloworld -d --network jenkins --publish 8081:8080  ravishah21/helloworld:v1.0'
     }
 }
