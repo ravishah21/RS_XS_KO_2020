@@ -21,7 +21,7 @@ node{
     stage ('remove old container'){
       def result = sh "docker container ls -q"
       echo result
-      if ( result == "null" ){
+      if ( result == "" ){
           echo "No helloworld container exists"
       } else {
           echo "helloworld container exists"
