@@ -19,7 +19,9 @@ node{
         sh 'docker push ravishah21/helloworld:v1.0'
     }
     stage ('remove old container'){
-      result =  sh "docker ps --format {{.Names}} -a |grep helloworld"
+      def result
+      echo result
+      sh "docker ps --format {{.Names}} -a |grep helloworld"
       echo result
       if (result == null) {
           echo "No helloworld container exists"
