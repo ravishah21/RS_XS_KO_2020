@@ -18,7 +18,9 @@ node{
        }
         sh 'docker push ravishah21/helloworld:v1.0'
     }
-
+    stage ('remove old container'){
+        sh 'docker rm helloworld -f'
+    }
     stage ('add new container application'){
       sh 'docker run --name helloworld -d --publish 8081:8080  ravishah21/helloworld:v1.0'
     }
