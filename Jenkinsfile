@@ -19,7 +19,13 @@ node{
         sh 'docker push ravishah21/helloworld:v1.0'
     }
     stage ('undeploy previous application on Dev box'){
+      sh 'result=$( sudo docker images -q helloworld )'
+      sh 'if [[ -n "$result" ]]; then
+      sh 'echo "Container exists"'
       sh 'docker rm helloworld -f'
+      sh 'else'
+      sh 'echo "No such container"''
+      sh  'fi'
     }
     stage ('Run Contianer application on Dev box'){
       sh 'docker run --name helloworld -d --network jenkins --publish 8081:8080  ravishah21/helloworld:v1.0'
