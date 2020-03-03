@@ -1,11 +1,11 @@
 from flask import Flask,render_template
-import socket
+#import socket
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello, World v1!"
+    return render_template('index.html')
     #try:
         #host_name = socket.gethostname()
         #host_ip = socket.gethostbyname(host_name)
