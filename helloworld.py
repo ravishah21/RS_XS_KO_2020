@@ -12,7 +12,7 @@ def index():
         #return render_template('index.html', hostname=host_name, ip=host_ip)
     #except:
     #    return render_template('error.html')
-
+    #
 
 if __name__ == "__main__":
     app.run(debug=True)
