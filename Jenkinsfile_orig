@@ -22,6 +22,6 @@ node{
         sh 'docker rm helloworld -f'
     }
     stage ('add new container application'){
-      sh 'docker run --name helloworld -d --publish 8081:5000  ravishah21/helloworld:v1.0'
+      sh 'docker run --name helloworld -d --publish 8081:8080  ravishah21/helloworld:v1.0'
     }
 }
