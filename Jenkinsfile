@@ -16,12 +16,12 @@ node{
 
         sh "docker login -u ravishah21 -p ${dockersecret}"
        }
-        sh 'docker push ravishah21/helloworldubu:v1.0'
+        sh 'docker push ravishah21/helloworld:v1.0'
     }
     stage ('remove old container'){
         sh 'docker rm helloworld -f'
     }
     stage ('add new container application'){
-      sh 'docker run --name helloworld -d --publish 8081:5000  ravishah21/helloworldubu:v1.0'
+      sh 'docker run --name helloworld -d --publish 8081:8080  ravishah21/helloworld:v1.0'
     }
 }
